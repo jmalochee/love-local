@@ -4,7 +4,6 @@ class BusinessesController < ApplicationController
   # GET /businesses
   def index
     @businesses = Business.all
-    binding.pry
   end
 
   # GET /businesses/1
