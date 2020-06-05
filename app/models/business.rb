@@ -9,7 +9,7 @@ class Business < ApplicationRecord
   validates :state, presence: true
   validates :zip_code, presence: true, length: { is: 5 }, numericality: { only_integer: true, greater_than: 0 }
   validates :phone, presence: true, length: { is: 10 }, numericality: { only_integer: true }
-  validates :website, length: { minimum: 5 }
-  validates :sqft, numericality: { only_integer: true, greater_than: 0 }
+  validates :website, length: { minimum: 5 }, allow_nil: true
+  validates :sqft, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
   validates :naics, length: { within: 5..6 }, numericality: { only_integer: true, greater_than: 0 }
 end
