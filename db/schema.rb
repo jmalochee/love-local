@@ -10,14 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_04_155937) do
+ActiveRecord::Schema.define(version: 2020_06_08_210330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "businesses", force: :cascade do |t|
-    t.string "category"
-    t.string "subcategory"
     t.string "business_type"
     t.string "name"
     t.string "address"
@@ -36,6 +34,20 @@ ActiveRecord::Schema.define(version: 2020_06_04_155937) do
     t.string "black"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "about"
+    t.bigint "subcategory_id"
+    t.index ["subcategory_id"], name: "index_businesses_on_subcategory_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "subcategories", force: :cascade do |t|
+    t.string "name"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_subcategories_on_category_id"
+  end
+
+  add_foreign_key "businesses", "subcategories"
 end

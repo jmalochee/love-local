@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<i>Subcategory</i>
+<h1><%= @subcategory.name %></h1>
+
+<div>
+	<p>
+		<strong>Categories</strong>
+	</p>
+	<% @categories.each do |cat| %>
+		<%= link_to cat.name, cat %>
+	<% end %>
+</div>
+<div>
+	<p>
+		<strong>Subcategories</strong>
+	</p>
+	<% @subcategories.each do |subcat| %>
+		<%= link_to subcat.name, subcat %>
+	<% end %>
+</div>
+
+<p>
+	<strong>Businesses</strong>
+</p>
+
+<table>
+	<thead>
+		<tr>
+			<th>Category</th>
+			<th>Subcategory</th>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Address</th>
+			<th>Website</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @subcategory.businesses.each do |business| %>
+		  <tr>
+		    <td><%= link_to business.category.name, business.category %></td>
+		    <td><%= link_to business.subcategory.name, business.subcategory %></td>
+		    <td><%= link_to business.name, business %></td>
+		    <td><%= business.description %></td>
+		    <td><%= business.address + " " + business.street%></td>
+		    <td><%= business.website %></td>
+		  </tr>
+		<% end %>
+	</tbody>
+</table>
+
+<%= link_to 'Back', subcategories_path %>

@@ -12,4 +12,90 @@
  *
  *= require_tree .
  *= require_self
+ *= require_tree ../fonts
  */
+
+@font-face {
+	font-family: 'Unna';
+	src: font-url('fonts/Unna/Unna-Light.eot');
+	src: font-url('fonts/Unna/Unna-Light.eot?#iefix') format('embedded-opentype'),
+		 font-url('fonts/Unna/Unna-Light.woff2') format('woff2'),
+		 font-url('fonts/Unna/Unna-Light.woff') format('woff'),
+		 font-url('fonts/Unna/Unna-Light.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 300;
+}
+@font-face {
+	font-family: 'Unna';
+	src: font-url('fonts/Unna/Unna-LightItalic.eot');
+	src: font-url('fonts/Unna/Unna-LightItalic.eot?#iefix') format('embedded-opentype'),
+		 font-url('fonts/Unna/Unna-LightItalic.woff2') format('woff2'),
+		 font-url('fonts/Unna/Unna-LightItalic.woff') format('woff'),
+		 font-url('fonts/Unna/Unna-LightItalic.ttf') format('truetype');
+	font-style: italic;
+	font-weight: 300;
+}
+@font-face {
+	font-family: 'Unna';
+	src: font-url('fonts/Unna/Unna-Regular.eot');
+	src: font-url('fonts/Unna/Unna-Regular.eot?#iefix') format('embedded-opentype'),
+		 font-url('fonts/Unna/Unna-Regular.woff2') format('woff2'),
+		 font-url('fonts/Unna/Unna-Regular.woff') format('woff'),
+		 font-url('fonts/Unna/Unna-Regular.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 400;
+}
+@font-face {
+	font-family: 'Unna';
+	src: font-url('fonts/Unna/Unna-Italic.eot');
+	src: font-url('fonts/Unna/Unna-Italic.eot?#iefix') format('embedded-opentype'),
+		 font-url('fonts/Unna/Unna-Italic.woff2') format('woff2'),
+		 font-url('fonts/Unna/Unna-Italic.woff') format('woff'),
+		 font-url('fonts/Unna/Unna-Italic.ttf') format('truetype');
+	font-style: italic;
+	font-weight: 400;
+}
+@font-face {
+	font-family: 'Unna';
+	src: font-url('fonts/Unna/Unna-Medium.eot');
+	src: font-url('fonts/Unna/Unna-Medium.eot?#iefix') format('embedded-opentype'),
+		 font-url('fonts/Unna/Unna-Medium.woff2') format('woff2'),
+		 font-url('fonts/Unna/Unna-Medium.woff') format('woff'),
+		 font-url('fonts/Unna/Unna-Medium.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 500;
+}
+@font-face {
+	font-family: 'Unna';
+	src: font-url('fonts/Unna/Unna-MediumItalic.eot');
+	src: font-url('fonts/Unna/Unna-MediumItalic.eot?#iefix') format('embedded-opentype'),
+		 font-url('fonts/Unna/Unna-MediumItalic.woff2') format('woff2'),
+		 font-url('fonts/Unna/Unna-MediumItalic.woff') format('woff'),
+		 font-url('fonts/Unna/Unna-MediumItalic.ttf') format('truetype');
+	font-style: italic;
+	font-weight: 500;
+}
+@font-face {
+	font-family: 'Unna';
+	src: font-url('fonts/Unna/Unna-Bold.eot');
+	src: font-url('fonts/Unna/Unna-Bold.eot?#iefix') format('embedded-opentype'),
+		 font-url('fonts/Unna/Unna-Bold.woff2') format('woff2'),
+		 font-url('fonts/Unna/Unna-Bold.woff') format('woff'),
+		 font-url('fonts/Unna/Unna-Bold.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 700;
+}
+@font-face {
+	font-family: 'Unna';
+	src: font-url('fonts/Unna/Unna-BoldItalic.eot');
+	src: font-url('fonts/Unna/Unna-BoldItalic.eot?#iefix') format('embedded-opentype'),
+		 font-url('fonts/Unna/Unna-BoldItalic.woff2') format('woff2'),
+		 font-url('fonts/Unna/Unna-BoldItalic.woff') format('woff'),
+		 font-url('fonts/Unna/Unna-BoldItalic.ttf') format('truetype');
+	font-style: italic;
+	font-weight: 700;
+}
+
+body{
+	font-family: Unna;
+}

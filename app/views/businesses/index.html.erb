@@ -5,18 +5,28 @@
 <table>
   <thead>
     <tr>
+      <th>Category</th>
+      <th>Subcategory</th>
       <th>Name</th>
-      <th colspan="3"></th>
+      <th>Description</th>
+      <th>Address</th>
+      <th>Website</th>
     </tr>
   </thead>
 
   <tbody>
     <% @businesses.each do |business| %>
       <tr>
-        <td><%= business.name %></td>
-        <td><%= link_to 'Show', business %></td>
-        <td><%= link_to 'Edit', edit_business_path(business) %></td>
-        <td><%= link_to 'Destroy', business, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to business.category.name, business.category %></td>
+        <td><%= link_to business.subcategory.name, business.subcategory %></td>
+        <td><%= link_to business.name, business %></td>
+        <td><%= business.description %></td>
+        <td><%= business.address + " " + business.street%></td>
+        <td>
+          <% if business.website? %>
+            <%= link_to business.website, business.website %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
