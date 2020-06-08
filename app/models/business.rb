@@ -1,6 +1,4 @@
 class Business < ApplicationRecord
-	validates :category, presence: true
-  validates :subcategory, presence: true
   validates :name, presence: true, length: { minimum: 3 }
   validates :about, length: { maximum: 250 }
   validates :address, presence: true
@@ -12,4 +10,6 @@ class Business < ApplicationRecord
   validates :website, length: { minimum: 5 }, allow_nil: true
   validates :sqft, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
   validates :naics, length: { within: 5..6 }, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
+  belongs_to :subcategory
+  has_one :category, through: :subcategory
 end

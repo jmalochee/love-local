@@ -17,12 +17,16 @@
   <tbody>
     <% @businesses.each do |business| %>
       <tr>
-        <td><%= business.category %></td>
-        <td><%= business.subcategory %></td>
+        <td><%= link_to business.category.name, business.category %></td>
+        <td><%= link_to business.subcategory.name, business.subcategory %></td>
         <td><%= link_to business.name, business %></td>
         <td><%= business.description %></td>
         <td><%= business.address + " " + business.street%></td>
-        <td><%= business.website %></td>
+        <td>
+          <% if business.website? %>
+            <%= link_to business.website, business.website %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

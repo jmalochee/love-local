@@ -1,8 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @business.name %>
+	<%= link_to @business.category.name, @business.category %> | 
+	<%= link_to @business.subcategory.name, @business.subcategory %>
+</p>
+<p>
+	<strong><%= @business.name %></strong>
+</p>
+<p>
+	<%= @business.address %> <%= @business.street %>
+</p>
+<p>
+	<%= @business.city %>, <%= @business.state %> <%= @business.zip_code %>
+</p>
+<p>
+	<%= @business.phone[0..2] %>-<%= @business.phone[3..5] %>-<%= @business.phone[6..9] %>
+</p>
+<p>
+	<% if @business.website? %>
+		<%= link_to @business.website, @business.website %>
+	<% end %>
+  
 </p>
 
 <%= link_to 'Edit', edit_business_path(@business) %> |
