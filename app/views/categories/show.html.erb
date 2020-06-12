@@ -1,49 +1,49 @@
 <p id="notice"><%= notice %></p>
 
-<i>Category</i>
+<i>Category show page</i>
 <h1><%= @category.name %></h1>
 
 <p>
 	<strong>subcategories</strong>
 </p>
-<div>
+<div class="categories">
 	<% @category.subcategories.each do |subcat| %>
-	  <%= link_to subcat.name, subcat %>
-	<% end %>
- </div>
-
+		<%= link_to subcat do %>
+			<div class="category-tile">
+				<div class="category-button">
+					<%= subcat.name.upcase %>
+				</div>
+			</div>
+		<%end%>
+	<%end%>
+</div>
 <p>
 	<strong>Businesses</strong>
 </p>
 
-<table>
-	<thead>
-		<tr>
-			<th>Category</th>
-			<th>Subcategory</th>
-			<th>Name</th>
-			<th>Description</th>
-			<th>Address</th>
-			<th>Website</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<% @category.businesses.each do |business| %>
-		  <tr>
-		    <td><%= link_to business.category.name, business.category %></td>
-		    <td><%= link_to business.subcategory.name, business.subcategory %></td>
-		    <td><%= link_to business.name, business %></td>
-		    <td><%= business.description %></td>
-		    <td><%= business.address + " " + business.street%></td>
-		    <td>
-		    	<% if business.website? %>
-		    		<%= link_to business.website, business.website %>
-		    	<% end %>
-		    </td>
-		  </tr>
+<div class="business-results">
+	<% @category.businesses.each do |business| %>
+		<%= link_to business do %>
+			<div class="business-result">
+		    <strong>
+		    	<%= business.name.upcase %>
+		    </strong>
+		    <br/>
+		    <i>
+		    	<%= business.category.name %>, 
+		    	<%= business.subcategory.name %>
+		    </i>
+				<br/>
+		    <%= business.address + " " + business.street%>
+		    <br/>
+		    Today's Hours: 9am - 5pm
+				<% if business.website? %>
+					<%= link_to business.website, business.website %>
+				<% end %>
+			</div>
 		<% end %>
-	</tbody>
-</table>
+	<% end %>
+</div>
+
 
 <%= link_to 'Back', categories_path %>

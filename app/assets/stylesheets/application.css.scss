@@ -96,6 +96,66 @@
 	font-weight: 700;
 }
 
-h1{
+body{
 	font-family: Unna;
+	color: #181C20;
+}
+
+h1{
+	font-size: 36px;
+	color: #006838;
+	text-align: center;
+}
+
+h2{ 
+	font-size: 28px;
+	color: #1c2018;
+}
+
+a{
+	color: #006838;
+	text-decoration:none;
+}
+a:hover{
+	color:#60a5dd;
+	text-decoration:none;
+}
+
+strong{
+	color: #006838;
+}
+
+.business-result{
+	padding: 4vmin;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #FFFFFF;
+	color: #181C20;
+}
+.business-result:hover{
+	border-color: #181C20;
+}
+
+.business-results{
+	margin: 5vmin;
+}
+
+.categories{
+	width: 100%;
+	overflow: hidden;
+}
+
+.category-tile{
+	box-sizing: border-box;
+	width: 32%;
+	float: left;
+	padding: 5%;
+}
+
+.category-button{
+	padding: 21px;
+	border-style: solid;
+	border-width: 2px;
+	color: #181C20;
+	text-align: center;
 }
