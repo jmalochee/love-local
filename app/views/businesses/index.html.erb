@@ -2,35 +2,21 @@
 
 <h1>Businesses</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>Subcategory</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Address</th>
-      <th>Website</th>
+<div>
+  <% @businesses.each do |business| %>
+      <td><%= link_to business.category.name, business.category %></td>
+      <td><%= link_to business.subcategory.name, business.subcategory %></td>
+      <strong><%= link_to business.name.upcase, business %></strong>
+      <td><%= business.description %></td>
+      <td><%= business.address + " " + business.street%></td>
+      <td>
+        <% if business.website? %>
+          <%= link_to business.website, business.website %>
+        <% end %>
+      </td>
     </tr>
-  </thead>
-
-  <tbody>
-    <% @businesses.each do |business| %>
-      <tr>
-        <td><%= link_to business.category.name, business.category %></td>
-        <td><%= link_to business.subcategory.name, business.subcategory %></td>
-        <td><%= link_to business.name, business %></td>
-        <td><%= business.description %></td>
-        <td><%= business.address + " " + business.street%></td>
-        <td>
-          <% if business.website? %>
-            <%= link_to business.website, business.website %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% end %>
+</div>
 
 <br>
 
