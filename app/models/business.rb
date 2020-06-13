@@ -53,20 +53,6 @@ class Business < ApplicationRecord
     today = Time.new.strftime('%a')[0..1].downcase    
     [self[today + "_open"], self[today + "_close"]]
   end
-
-  def hours_today
-    def hour12(str)
-      if str.to_i > 1200
-        ((str.to_i - 1200).to_s + " p.m.").insert(-8, ":")
-      else
-        (str + " a.m.").insert(-8, ":")
-      end
-    end
-    [
-      hour12(self.open_today[0]),
-      hour12(self.open_today[1])
-    ]
-  end
 end
 
 

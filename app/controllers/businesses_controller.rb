@@ -4,6 +4,7 @@ class BusinessesController < ApplicationController
   # GET /businesses
   def index
     @businesses = Business.search(params[:cat])
+
   end
 
   # GET /businesses/1

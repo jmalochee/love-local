@@ -9,8 +9,7 @@
 </p>
 <p>
 	<%= @business.address %> <%= @business.street %>
-</p>
-<p>
+<br/>
 	<%= @business.city %>, <%= @business.state %> <%= @business.zip_code %>
 </p>
 <p>
@@ -22,6 +21,19 @@
 	<% end %>
   
 </p>
+<strong>Hours</strong>
+<br/>
+<i><%= @business.open_today? ? "Open today" : "Closed today" %></i>
+<ul>
+	<li>Sunday: <%= pretty_time(@business.su_open) %> <%= !!@business.su_open ? "–" : "Closed" %> <%= pretty_time(@business.su_close) %></li>
+	<li>Monday: <%= pretty_time(@business.mo_open) %> <%= !!@business.mo_open ? "–" : "Closed" %> <%= pretty_time(@business.mo_close) %></li>
+	<li>Tuesday: <%= pretty_time(@business.tu_open) %> <%= !!@business.tu_open ? "–" : "Closed" %> <%= pretty_time(@business.tu_close) %></li>
+	<li>Wedensday: <%= pretty_time(@business.we_open) %> <%= !!@business.we_open ? "–" : "Closed" %> <%= pretty_time(@business.we_close) %></li>
+	<li>Thursday: <%= pretty_time(@business.th_open) %> <%= !!@business.th_open ? "–" : "Closed" %> <%= pretty_time(@business.th_close) %></li>
+	<li>Friday: <%= pretty_time(@business.fr_open) %> <%= !!@business.fr_open ? "–" : "Closed" %> <%= pretty_time(@business.fr_close) %></li>
+	<li>Saturday: <%= pretty_time(@business.sa_open) %> <%= !!@business.sa_open ? "–" : "Closed" %> <%= pretty_time(@business.sa_close) %></li>
+</ul>
+
 
 <%= link_to 'Edit', edit_business_path(@business) %> |
 <%= link_to 'Back', businesses_path %>
