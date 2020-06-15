@@ -19,12 +19,11 @@
 	<% if @business.website? %>
 		<%= link_to @business.website, @business.website %>
 	<% end %>
-  
 </p>
+<p>
 <strong>Hours</strong>
 <i><%= @business.open_today? ? "Open today" : "Closed today" %></i>
-<br/>
-<br/>
+<p/>
 <table>
 	<tr>
 		<td> 

@@ -18,7 +18,7 @@
         <%= business.address + " " + business.street%>
         <br/>
         <%= business.open_today? ? "Open today from " : "Closed today" %>
-        <%= business.open_today? ? business.hours_today[0] + " – " + business.hours_today[1] : ""%>
+        <%= business.open_today? ? pretty_time(business.open_today[0]) + " – " + pretty_time(business.open_today[1]) : ""%>
       </div>
     <% end %>
   <% end %>
