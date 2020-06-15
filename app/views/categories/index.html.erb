@@ -2,15 +2,5 @@
 
 <h1>Categories</h1>
 
-<div class="categories">
-	<% @categories.each do |category| %>
-		<%= link_to category do %>
-			<div class="category-tile">
-				<div class="category-button">
-					<%= category.name.upcase %>
-				</div>
-			</div>
-		<%end%>
-	<% end %>
-</div>
+<%= render :partial => "layouts/categories", :locals => { :categories => @categories } %>
 
