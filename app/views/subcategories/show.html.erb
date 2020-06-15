@@ -1,4 +1,9 @@
-<%= link_to 'Back', @subcategory.category %>
+<i>
+<%= link_to "All Categories", categories_path %> >
+<%= link_to @subcategory.category.name, @subcategory.category %> >
+<%= @subcategory.name %>
+</i>
+
 <p id="notice"><%= notice %></p>
 
 <h1><%= @subcategory.name %></h1>

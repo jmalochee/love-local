@@ -1,12 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-	<%= link_to @business.category.name, @business.category %> | 
-	<%= link_to @business.subcategory.name, @business.subcategory %>
-</p>
-<p>
-	<strong><%= @business.name %></strong>
-</p>
+<i>
+<%= link_to "All Categories", categories_path %> >
+<%= link_to @business.category.name, @business.category %> >
+<%= link_to @business.subcategory.name, @business.subcategory %> >
+<%= @business.name %>
+</i>
+
+
+<h1>
+	<%= @business.name %>
+</h1>
 <p>
 	<%= @business.address %> <%= @business.street %>
 <br/>
