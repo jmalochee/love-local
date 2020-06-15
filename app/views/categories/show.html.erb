@@ -1,15 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<i>Category show page</i>
+<i>
+<%= link_to "All Categories", categories_path %> >
+<%= @category.name %>
+</i>
+
 <h1><%= @category.name %></h1>
 
-<p>
-	<strong>subcategories</strong>
-</p>
 <%= render :partial => "layouts/categories", :locals => { :categories => @category.subcategories } %>
-<p>
-	<strong>Businesses</strong>
-</p>
 
 <div class="business-results">
 	<% @category.businesses.each do |business| %>
@@ -35,5 +33,3 @@
 	<% end %>
 </div>
 
-
-<%= link_to 'Back', categories_path %>
