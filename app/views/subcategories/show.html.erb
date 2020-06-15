@@ -8,27 +8,5 @@
 
 <h1><%= @subcategory.name %></h1>
 
-<div class="business-results">
-	<% @subcategory.businesses.each do |business| %>
-		<%= link_to business do %>
-			<div class="business-result">
-		    <strong>
-		    	<%= business.name.upcase %>
-		    </strong>
-		    <br/>
-		    <i>
-		    	<%= business.category.name %>, 
-		    	<%= business.subcategory.name %>
-		    </i>
-				<br/>
-		    <%= business.address + " " + business.street%>
-		    <br/>
-		    Today's Hours: 9am - 5pm
-				<% if business.website? %>
-					<%= link_to business.website, business.website %>
-				<% end %>
-			</div>
-		<% end %>
-	<% end %>
-</div>
+<%= render :partial => "layouts/business-results", :locals => { :results => @subcategory.businesses } %>
 
