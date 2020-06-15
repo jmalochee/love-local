@@ -5,11 +5,5 @@
 <p>
 	<strong>Businesses</strong>
 </p>
-<div>
-	<% @subcategories.each do |subcat| %>
-	  <tr>
-	    <td><%= link_to subcat.name, subcat %></td>
-	  </tr>
-	<% end %>
-</div>
+<%= render :partial => "layouts/categories", :locals => { :categories => @subcategories } %>
 <%= link_to 'Back', subcategories_path %>

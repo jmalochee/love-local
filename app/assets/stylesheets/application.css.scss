@@ -96,6 +96,13 @@
 	font-weight: 700;
 }
 
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body{
 	font-family: Unna;
 	color: #181C20;
@@ -125,10 +132,6 @@ strong{
 	color: #006838;
 }
 
-ul{
-	list-style-type: none;
-}
-
 .business-result{
 	padding: 4vmin;
 	border-style: solid;
@@ -147,13 +150,14 @@ ul{
 .categories{
 	width: 100%;
 	overflow: hidden;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
 }
 
 .category-tile{
-	box-sizing: border-box;
 	width: 32%;
-	float: left;
-	padding: 5%;
+	padding: 25px 5% 25px 5%;
 }
 
 .category-button{

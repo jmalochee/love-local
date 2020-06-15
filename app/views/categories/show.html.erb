@@ -6,17 +6,7 @@
 <p>
 	<strong>subcategories</strong>
 </p>
-<div class="categories">
-	<% @category.subcategories.each do |subcat| %>
-		<%= link_to subcat do %>
-			<div class="category-tile">
-				<div class="category-button">
-					<%= subcat.name.upcase %>
-				</div>
-			</div>
-		<%end%>
-	<%end%>
-</div>
+<%= render :partial => "layouts/categories", :locals => { :categories => @category.subcategories } %>
 <p>
 	<strong>Businesses</strong>
 </p>

@@ -1,0 +1,11 @@
+<div class="categories">
+	<% categories.each do |category| %>
+		<div class="category-tile">
+			<%= link_to category do %>
+				<div class="category-button">
+					<%= category.name.upcase %>
+				</div>
+			<%end%>
+		</div>
+	<% end %>
+</div>
