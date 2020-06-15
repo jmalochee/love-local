@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_08_210330) do
+ActiveRecord::Schema.define(version: 2020_06_12_204717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,20 @@ ActiveRecord::Schema.define(version: 2020_06_08_210330) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "about"
     t.bigint "subcategory_id"
+    t.string "su_open"
+    t.string "su_close"
+    t.string "mo_open"
+    t.string "mo_close"
+    t.string "tu_open"
+    t.string "tu_close"
+    t.string "we_open"
+    t.string "we_close"
+    t.string "th_open"
+    t.string "th_close"
+    t.string "fr_open"
+    t.string "fr_close"
+    t.string "sa_open"
+    t.string "sa_close"
     t.index ["subcategory_id"], name: "index_businesses_on_subcategory_id"
   end
 
