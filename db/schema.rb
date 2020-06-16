@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_12_204717) do
+ActiveRecord::Schema.define(version: 2020_06_15_230606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,11 +50,19 @@ ActiveRecord::Schema.define(version: 2020_06_12_204717) do
     t.string "fr_close"
     t.string "sa_open"
     t.string "sa_close"
+    t.string "phone_ext"
     t.index ["subcategory_id"], name: "index_businesses_on_subcategory_id"
   end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "socials", force: :cascade do |t|
+    t.string "site"
+    t.string "url"
+    t.bigint "business_id", null: false
+    t.index ["business_id"], name: "index_socials_on_business_id"
   end
 
   create_table "subcategories", force: :cascade do |t|
@@ -64,4 +72,5 @@ ActiveRecord::Schema.define(version: 2020_06_12_204717) do
   end
 
   add_foreign_key "businesses", "subcategories"
+  add_foreign_key "socials", "businesses"
 end

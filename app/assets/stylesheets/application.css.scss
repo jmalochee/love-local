@@ -132,6 +132,11 @@ strong{
 	color: #006838;
 }
 
+.business-results{
+	margin: 5vmin;
+	padding: 0 10% 0 10%;
+}
+
 .business-result{
 	padding: 4vmin;
 	border-style: solid;
@@ -143,16 +148,13 @@ strong{
 	border-color: #181C20;
 }
 
-.business-results{
-	margin: 5vmin;
-}
-
 .categories{
 	width: 100%;
 	overflow: hidden;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
+	padding: 0 15% 0 15%;
 }
 
 .category-tile{
