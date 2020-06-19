@@ -1,6 +1,9 @@
 <h1>Businesses</h1>
 
-<%= render :partial => "layouts/business-results", :locals => { :results => @businesses } %>
-<br>
+<%= render :partial => "layouts/categories", :locals => { :items => @categories, :attribute => "category"} %>
 
-<%= link_to 'New Business', new_business_path %>
+<div class="business-results">
+  <% @businesses.each do |business| %>
+		<%= render :partial => "layouts/business-results", :locals => { :business => business } %>
+	<%end%>
+</div>

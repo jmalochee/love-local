@@ -1,11 +1,7 @@
 <div class="categories">
-	<% categories.each do |category| %>
+	<% items.each do |item| %>
 		<div class="category-tile">
-			<%= link_to category do %>
-				<div class="category-button">
-					<%= category.name.upcase %>
-				</div>
-			<%end%>
+			<%= link_to item.category, "/businesses?filter[attribute]=category&filter[value]=#{item.category}", class: "category-button" %>
 		</div>
-	<% end %>
+	<%end%>
 </div>

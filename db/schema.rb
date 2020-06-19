@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 2020_06_15_230606) do
   enable_extension "plpgsql"
 
   create_table "businesses", force: :cascade do |t|
+    t.string "category"
+    t.string "subcategory"
     t.string "business_type"
     t.string "name"
     t.string "address"
@@ -35,7 +37,6 @@ ActiveRecord::Schema.define(version: 2020_06_15_230606) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "about"
-    t.bigint "subcategory_id"
     t.string "su_open"
     t.string "su_close"
     t.string "mo_open"
@@ -51,11 +52,6 @@ ActiveRecord::Schema.define(version: 2020_06_15_230606) do
     t.string "sa_open"
     t.string "sa_close"
     t.string "phone_ext"
-    t.index ["subcategory_id"], name: "index_businesses_on_subcategory_id"
-  end
-
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
   end
 
   create_table "socials", force: :cascade do |t|
@@ -65,12 +61,5 @@ ActiveRecord::Schema.define(version: 2020_06_15_230606) do
     t.index ["business_id"], name: "index_socials_on_business_id"
   end
 
-  create_table "subcategories", force: :cascade do |t|
-    t.string "name"
-    t.bigint "category_id"
-    t.index ["category_id"], name: "index_subcategories_on_category_id"
-  end
-
-  add_foreign_key "businesses", "subcategories"
   add_foreign_key "socials", "businesses"
 end
