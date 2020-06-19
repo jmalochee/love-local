@@ -1,3 +1,5 @@
+<%= @filter_all ? "All Categories" : link_to("All Categories", "/businesses") + " > " + @categories.take.category %>
+
 <h1>Businesses</h1>
 
 <%= render :partial => "layouts/categories", :locals => { :items => @categories, :attribute => "category"} %>
