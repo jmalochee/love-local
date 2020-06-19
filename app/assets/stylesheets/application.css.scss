@@ -143,6 +143,7 @@ strong{
 	border-width: 2px;
 	border-color: #FFFFFF;
 	color: #181C20;
+	transition: all 0.1s linear;
 }
 .business-result:hover{
 	border-color: #181C20;
@@ -168,4 +169,9 @@ strong{
 	border-width: 2px;
 	color: #181C20;
 	text-align: center;
+	transition: all 0.1s linear;
+}
+.category-button:hover{
+	color: #FFFFFF;
+	background-color: #181C20;
 }

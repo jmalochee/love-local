@@ -1,11 +1,8 @@
 <div class="categories">
-	<% categories.each do |category| %>
+	<% items.each do |item| %>
+		<% params = {filter: {attribute: attribute, value: item[attribute]}}.to_query %>
 		<div class="category-tile">
-			<%= link_to category do %>
-				<div class="category-button">
-					<%= category.name.upcase %>
-				</div>
-			<%end%>
+			<%= link_to item[attribute].upcase, "/businesses?"+params, class: "category-button" %>
 		</div>
-	<% end %>
+	<%end%>
 </div>

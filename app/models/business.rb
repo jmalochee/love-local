@@ -10,8 +10,8 @@ class Business < ApplicationRecord
   validates :website, length: { minimum: 5 }, allow_nil: true
   validates :sqft, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
   validates :naics, length: { within: 5..6 }, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
-  belongs_to :subcategory
-  has_one :category, through: :subcategory
+  # belongs_to :subcategory
+  # has_one :category, through: :subcategory
   validates :su_open, allow_nil: true, format: { with: /\d{3,4}/, message: "Time must be in HHMM format"}
   validates :su_close, allow_nil: true, format: { with: /\d{3,4}/, message: "Time must be in HHMM format"}
   validates :mo_open, allow_nil: true, format: { with: /\d{3,4}/, message: "Time must be in HHMM format"}
@@ -27,9 +27,9 @@ class Business < ApplicationRecord
   validates :sa_open, allow_nil: true, format: { with: /\d{3,4}/, message: "Time must be in HHMM format"}
   validates :sa_close, allow_nil: true, format: { with: /\d{3,4}/, message: "Time must be in HHMM format"}
 
-  def self.search(search)
-    if search
-      where(category: search)
+  def self.filter(filter)
+    if filter
+      where(filter[:attribute] => filter[:value])
     else
       default_scoped
     end
@@ -52,6 +52,14 @@ class Business < ApplicationRecord
   def open_today
     today = Time.new.strftime('%a')[0..1].downcase    
     [self[today + "_open"], self[today + "_close"]]
+  end
+
+  def category_url
+    "/businesses?"+{filter: {attribute: "category", value: self.category}}.to_query
+  end  
+
+  def subcategory_url
+    "/businesses?"+{filter: {attribute: "subcategory", value: self.subcategory}}.to_query
   end
 end
 

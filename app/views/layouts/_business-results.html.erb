@@ -1,5 +1,4 @@
-<div class="business-results">
-  <% results.each do |business| %>
+
     <%= link_to business do %>
       <div class="business-result">
         <strong>
@@ -7,8 +6,8 @@
         </strong>
         <br/>
         <i>
-          <%= business.category.name %>, 
-          <%= business.subcategory.name %>
+          <%= business.category %>, 
+          <%= business.subcategory %>
         </i>
         <br/>
         <%= business.address + " " + business.street%>
@@ -17,5 +16,3 @@
         <%= business.open_today? ? pretty_time(business.open_today[0]) + " – " + pretty_time(business.open_today[1]) : ""%>
       </div>
     <% end %>
-  <% end %>
-</div>

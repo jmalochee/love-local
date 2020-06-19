@@ -1,6 +1,20 @@
+<i>
+	<%= @filter_all ? "All Categories" : link_to("All Categories", "/businesses") + " > " %>
+	<%= @filter_cat ? @categories.take.category : nil %>
+	<%= @filter_subcat ? link_to(@categories.take.category, @categories.take.category_url) + " > " + @subcategories.take.subcategory : nil %> 
+</i>
+
 <h1>Businesses</h1>
 
-<%= render :partial => "layouts/business-results", :locals => { :results => @businesses } %>
-<br>
+<% if @filter_all %>
+	<%= render :partial => "layouts/categories", :locals => { :items => @categories, :attribute => "category"} %>
+<% elsif @filter_cat %>
+	<%= render :partial => "layouts/categories", :locals => { :items => @subcategories, :attribute => "subcategory"} %>
+<% end %>
 
-<%= link_to 'New Business', new_business_path %>
+
+<div class="business-results">
+  <% @businesses.each do |business| %>
+		<%= render :partial => "layouts/business-results", :locals => { :business => business } %>
+	<%end%>
+</div>
