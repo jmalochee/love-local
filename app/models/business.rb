@@ -53,6 +53,14 @@ class Business < ApplicationRecord
     today = Time.new.strftime('%a')[0..1].downcase    
     [self[today + "_open"], self[today + "_close"]]
   end
+
+  def category_url
+    "/businesses?"+{filter: {attribute: "category", value: self.category}}.to_query
+  end  
+
+  def subcategory_url
+    "/businesses?"+{filter: {attribute: "subcategory", value: self.subcategory}}.to_query
+  end
 end
 
 

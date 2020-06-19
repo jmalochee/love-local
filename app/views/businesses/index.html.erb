@@ -1,7 +1,7 @@
 <i>
 	<%= @filter_all ? "All Categories" : link_to("All Categories", "/businesses") + " > " %>
 	<%= @filter_cat ? @categories.take.category : nil %>
-	<%= @filter_subcat ? link_to(@categories.take.category, "/businesses?"+{filter: {attribute: "category", value: @categories.take.category}}.to_query) + " > " + @subcategories.take.subcategory : nil %> 
+	<%= @filter_subcat ? link_to(@categories.take.category, @categories.take.category_url) + " > " + @subcategories.take.subcategory : nil %> 
 </i>
 
 <h1>Businesses</h1>
