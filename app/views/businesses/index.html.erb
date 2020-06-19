@@ -2,7 +2,12 @@
 
 <h1>Businesses</h1>
 
-<%= render :partial => "layouts/categories", :locals => { :items => @categories, :attribute => "category"} %>
+<% if @filter_all %>
+	<%= render :partial => "layouts/categories", :locals => { :items => @categories, :attribute => "category"} %>
+<% elsif @filter_cat %>
+	<%= render :partial => "layouts/categories", :locals => { :items => @subcategories, :attribute => "subcategory"} %>
+<% end %>
+
 
 <div class="business-results">
   <% @businesses.each do |business| %>
