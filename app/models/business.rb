@@ -6,7 +6,9 @@ class Business < ApplicationRecord
   validates :city, presence: true, length: { minimum: 3 }
   validates :state, presence: true
   validates :zip_code, presence: true, length: { is: 5 }, numericality: { only_integer: true, greater_than: 0 }
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :phone, presence: true, length: { is: 10 }, numericality: { only_integer: true }
+  validates :phone_ext, numericality: { only_integer: true }
   validates :website, length: { minimum: 5 }, allow_nil: true
   validates :sqft, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
   validates :naics, length: { within: 5..6 }, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
@@ -26,8 +28,7 @@ class Business < ApplicationRecord
   validates :sa_close, allow_nil: true, format: { with: /\d{3,4}/, message: "Time must be in HHMM format"}
   has_and_belongs_to_many :services
   has_and_belongs_to_many :people
-  has_many :contacts
-  accepts_nested_attributes_for :people, :contacts
+  accepts_nested_attributes_for :people
 
   def self.filter(filter)
     if filter
