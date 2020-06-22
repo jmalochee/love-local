@@ -25,6 +25,9 @@ class Business < ApplicationRecord
   validates :sa_open, allow_nil: true, format: { with: /\d{3,4}/, message: "Time must be in HHMM format"}
   validates :sa_close, allow_nil: true, format: { with: /\d{3,4}/, message: "Time must be in HHMM format"}
   has_and_belongs_to_many :services
+  has_and_belongs_to_many :people
+  has_many :contacts
+  accepts_nested_attributes_for :people, :contacts
 
   def self.filter(filter)
     if filter
