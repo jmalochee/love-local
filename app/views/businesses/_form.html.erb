@@ -1,22 +1,278 @@
+<div class="business-form">
 <%= form_with(model: business, local: true) do |form| %>
-  <% if business.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(business.errors.count, "error") %> prohibited this business from being saved:</h2>
+    <% if business.errors.any? %>
+      <div id="error_explanation">
+        <h3><%= pluralize(business.errors.count, "error") %> prohibited this business from being saved:</h3>
+        <ul>
+          <% business.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <table>
+      <thead><strong>Business Information</strong></thead>
+      <tr>
+        <td>
+          <%= form.label :category %>
+        </td>
+        <td class="field">
+          <%= form.text_field :category %>
+        </td>
+      </tr>
 
-      <ul>
-        <% business.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+      <tr>
+        <td>
+          <%= form.label :subcategory %>
+        </td>
+        <td class="field">
+          <%= form.text_field :subcategory %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= form.label :name %>
+        </td>
+        <td class="field">
+          <%= form.text_field :name %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= form.label :phone %>
+        </td>
+        <td class="field">
+          <%= form.telephone_field :phone, maxlength: 10, size: 12 %>
+          <%= form.label :phone_ext, "ext" %>
+          <%= form.text_field :phone_ext, pattern: "[0-9]*", size: 5 %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= form.label :email %>
+        </td>
+        <td class="field">
+          <%= form.email_field :email %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= form.label :address %>
+        </td>
+        <td class="field">
+          <%= form.text_field :address %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= form.label :street %>
+        </td>
+        <td class="field">
+          <%= form.text_field :street %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= form.label :unit %>
+        </td>
+        <td class="field">
+          <%= form.text_field :unit %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= form.label :city %>
+        </td>
+        <td class="field">
+          <%= form.select(:city, [["West Roxbury", "West Roxbury"]]) %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= form.label :state %>
+        </td>
+        <td class="field">
+          <%= form.select(:state, [["MA", "MA"]]) %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= form.label :zip_code %>
+        </td>
+        <td class="field">
+          <%= form.text_field :zip_code, placeholder: "5-digit zip" %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= form.label :website %>
+        </td>
+        <td class="field">
+          <%= form.url_field :website %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= form.label :about %>
+        </td>
+        <td class="field">
+          <%= form.text_area :about, maxlength: 250, rows: 5, cols: 65, placeholder: "Tell us about your business (250 character limit)"%>
+        </td>
+      </tr>
+
+    </table>
+    <table>
+      <thead><strong>Minority Status</strong></thead>
+      <tr>
+        <td>
+          <%= form.label :black %>
+        </td>
+        <td class="field">
+          <%= form.select(:black, [["N/A",""],["Owned","Owned"],["Managed","Managed"]]) %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= form.label :minority %>
+        </td>
+        <td class="field">
+          <%= form.select(:minority, [["N/A",""],["Owned","Owned"],["Managed","Managed"]]) %>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <%= form.label :women %>
+        </td>
+        <td class="field">
+          <%= form.select(:women, [["N/A",""],["Owned","Owned"],["Managed","Managed"]]) %>
+        </td>
+      </tr>
+    </table>
+
+    <div class="schedule-fields">
+      <table>
+        <thead><strong>Current Schedule</strong></thead>
+        <tr>
+          <th></th>
+          <th> Open </th>
+          <th> Close </th>
+        </tr>
+
+        <tr>
+          <td> 
+            Sunday
+          </td>
+          <td class="field">
+            <%= form.label :su_open, "&nbsp;".html_safe %>
+            <%= form.text_field :su_open, placeholder: "hhmm", maxlength: 4, pattern: "[0-9]*", size: 5 %>
+          </td>
+          <td class="field">
+            <%= form.label :su_close, "&nbsp;".html_safe %>
+            <%= form.text_field :su_close, placeholder: "hhmm", maxlength: 4, pattern: "[0-9]*", size: 5 %>
+          </td>
+        </tr>
+
+        <tr>
+          <td> 
+            Monday
+          </td>
+          <td class="field">
+            <%= form.label :mo_open, "&nbsp;".html_safe %>
+            <%= form.text_field :mo_open, placeholder: "hhmm", maxlength: 4, pattern: "[0-9]*", size: 5 %>
+          </td>
+          <td class="field">
+            <%= form.label :mo_close, "&nbsp;".html_safe %>
+            <%= form.text_field :mo_close, placeholder: "hhmm", maxlength: 4, pattern: "[0-9]*", size: 5 %>
+          </td>
+        </tr>
+
+        <tr>
+          <td> 
+            Tuesday
+          </td>        
+          <td class="field">
+            <%= form.label :tu_open, "&nbsp;".html_safe %>
+            <%= form.text_field :tu_open, placeholder: "hhmm", maxlength: 4, pattern: "[0-9]*", size: 5 %>
+          </td>
+          <td class="field">
+            <%= form.label :tu_close, "&nbsp;".html_safe %>
+            <%= form.text_field :tu_close, placeholder: "hhmm", maxlength: 4, pattern: "[0-9]*", size: 5 %>
+          </td>
+        </tr>
+
+        <tr>
+          <td> 
+            Wedensday
+          </td>
+          <td class="field">
+            <%= form.label :we_open, "&nbsp;".html_safe %>
+            <%= form.text_field :we_open, placeholder: "hhmm", maxlength: 4, pattern: "[0-9]*", size: 5 %>
+          </td>
+          <td class="field">
+            <%= form.label :we_close, "&nbsp;".html_safe %>
+            <%= form.text_field :we_close, placeholder: "hhmm", maxlength: 4, pattern: "[0-9]*", size: 5 %>
+          </td>
+        </tr>
+
+        <tr>
+          <td> 
+            Thursday
+          </td>
+          <td class="field">
+            <%= form.label :th_open, "&nbsp;".html_safe %>
+            <%= form.text_field :th_open, placeholder: "hhmm", maxlength: 4, pattern: "[0-9]*", size: 5 %>
+          </td>
+          <td class="field">
+            <%= form.label :th_close, "&nbsp;".html_safe %>
+            <%= form.text_field :th_close, placeholder: "hhmm", maxlength: 4, pattern: "[0-9]*", size: 5 %>
+          </td>
+        </tr>
+
+        <tr>
+          <td> 
+            Friday
+          </td>
+          <td class="field">
+            <%= form.label :fr_open, "&nbsp;".html_safe %>
+            <%= form.text_field :fr_open, placeholder: "hhmm", maxlength: 4, pattern: "[0-9]*", size: 5 %>
+          </td>
+          <td class="field">
+            <%= form.label :fr_close, "&nbsp;".html_safe %>
+            <%= form.text_field :fr_close, placeholder: "hhmm", maxlength: 4, pattern: "[0-9]*", size: 5 %>
+          </td>
+        </tr>
+
+        <tr>
+          <td> 
+            Saturday
+          </td>
+          <td class="field">
+            <%= form.label :sa_open, "&nbsp;".html_safe %>
+            <%= form.text_field :sa_open, placeholder: "hhmm", maxlength: 4, pattern: "[0-9]*", size: 5 %>
+          </td>
+          <td class="field">
+            <%= form.label :sa_close, "&nbsp;".html_safe %>
+            <%= form.text_field :sa_close, placeholder: "hhmm", maxlength: 4, pattern: "[0-9]*", size: 5 %>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "SAVE BUSINESS", class: "button" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
