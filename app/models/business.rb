@@ -65,8 +65,25 @@ class Business < ApplicationRecord
     "/businesses?"+{filter: {attribute: "subcategory", value: self.subcategory}}.to_query
   end
 
-  def all_categories
+  def self.all_cats
+    cats = []
+    Business.select(:category).distinct.each {|cat| cats.push(cat.category)}
+    cats
+  end
 
+  def self.all_subs
+    subs = []
+    Business.select(:subcategory).distinct.each {|sub| subs.push(sub.subcategory)}
+    subs
+  end
+
+  def self.all_subcats
+    subcats = {}
+    all_cats.each do |cat|
+      subcats[cat] = []
+      Business.where({category: cat}).select(:subcategory).distinct.each { |sub| subcats[cat] << sub.subcategory }
+    end
+    subcats
   end
 end
 

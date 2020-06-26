@@ -4,8 +4,8 @@ class BusinessesController < ApplicationController
   # GET /businesses
   def index
     @businesses = Business.filter(params[:filter])
-    @categories = @businesses.select(:category).distinct
-    @subcategories = @businesses.select(:subcategory).distinct
+    @categories = Business.all_cats
+    @subcategories = Business.all_subs
 
     @filter_all = @categories.length > 1
     @filter_cat = @filter_all ^ (@subcategories.length > 1)
