@@ -14,21 +14,14 @@
       <thead><strong>Business Information</strong></thead>
       <tr>
         <td>
-          <%= form.label :category %>
+          <%= form.label :subcategory, value: "Category" %>
         </td>
         <td class="field">
-          <%= form.text_field :category %>
+          <%= form.select "subcategory", grouped_options_for_select(@subcat_options, nil, prompt: "Please select") %>
         </td>
       </tr>
 
-      <tr>
-        <td>
-          <%= form.label :subcategory %>
-        </td>
-        <td class="field">
-          <%= form.text_field :subcategory %>
-        </td>
-      </tr>
+      <%= form.hidden_field :category, value: "" %>
 
       <tr>
         <td>
@@ -44,9 +37,13 @@
           <%= form.label :phone %>
         </td>
         <td class="field">
-          <%= form.telephone_field :phone, maxlength: 10, size: 12 %>
-          <%= form.label :phone_ext, "ext" %>
-          <%= form.text_field :phone_ext, pattern: "[0-9]*", size: 5 %>
+          <div class="inline">
+            <%= form.telephone_field :phone, maxlength: 10, size: 12 %>
+          </div>
+          <div class="inline">
+            <%= form.label :phone_ext, "ext" %>
+            <%= form.text_field :phone_ext, pattern: "[0-9]*", size: 5 %>
+          </div>
         </td>
       </tr>
 

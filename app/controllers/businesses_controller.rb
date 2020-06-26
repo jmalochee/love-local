@@ -19,15 +19,21 @@ class BusinessesController < ApplicationController
   # GET /businesses/new
   def new
     @business = Business.new
+    @subcat_options = Business.all_subcats
   end
 
   # GET /businesses/1/edit
   def edit
+    @subcat_options = Business.all_subcats
   end
 
   # POST /businesses
   def create
     @business = Business.new(business_params)
+    @subcat_options = Business.all_subcats
+    if @business[:category].present?
+      @business[:category] = Business.where({subcategory: @business.subcategory}).select(:category).distinct.take.category
+    end
 
     if @business.save
       redirect_to @business, notice: 'Business was successfully created.'

@@ -1,4 +1,6 @@
 class Business < ApplicationRecord
+  validates :category, presence: true, allow_blank: false
+  validates :category, presence: true, allow_blank: false
   validates :name, presence: true, length: { minimum: 3 }
   validates :about, length: { maximum: 250 }
   validates :address, presence: true
@@ -28,7 +30,8 @@ class Business < ApplicationRecord
   validates :sa_close, allow_blank: true, format: { with: /\d{3,4}/, message: "Time must be in HHMM format"}
   has_and_belongs_to_many :services
   has_and_belongs_to_many :people
-  accepts_nested_attributes_for :people
+  has_many :socials
+  accepts_nested_attributes_for :people, :socials
 
   def self.filter(filter)
     if filter
