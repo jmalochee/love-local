@@ -5,6 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+services = Service.create([
+	{name: "Delivery"},
+	{name: "Takeout/Pickup"},
+	{name: "Gift cards"},
+	{name: "Appointment"},
+	{name: "Outside Seating"},
+	{name: "Senior/Disabled Hours"},
+	{name: "Call for service"},
+	{name: "Email for service"},
+	{name: "Mobile/Web App"}
+])
+
 businesses = Business.create([
 	{category: "Services", subcategory: "Auto", business_type: "Business Outside the District", name: "Ace Auto & Plate Glass", address: "1440", street: "VFW Parkway", city: "West Roxbury", state: "MA", zip_code: "02132", phone: "6173236554", description: "Auto Services, Glass Repair", naics: "811122", mo_open: "900", mo_close: "1700", tu_open: "900", tu_close: "1700", we_open: "900", we_close: "1700", th_open: "900", th_close: "1700", fr_open: "900", fr_close: "1700"},
 	{category: "Shop", subcategory: "Retail", business_type: "District Business", name: "Adi's Bike World", address: "1754", street: "Centre Street", city: "West Roxbury", state: "MA", zip_code: "02132", phone: "6173252453", website: "http://www.adisbikeworld.net/", mo_open: "900", mo_close: "1700", tu_open: "900", tu_close: "1700", we_open: "900", we_close: "1700", th_open: "900", th_close: "1700", fr_open: "900", fr_close: "1700"},

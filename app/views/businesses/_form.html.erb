@@ -10,154 +10,158 @@
         </ul>
       </div>
     <% end %>
-    <table>
-      <thead><strong>Business Information</strong></thead>
-      <tr>
-        <td>
-          <%= form.label :subcategory, value: "Category" %>
-        </td>
-        <td class="field">
-          <%= form.select "subcategory", grouped_options_for_select(@subcat_options, nil, prompt: "Please select") %>
-        </td>
-      </tr>
 
-      <%= form.hidden_field :category, value: "" %>
+    <div class="business-fields">
+      <table>
+        <thead><strong>Business Information</strong></thead>
+        <tr>
+          <td>
+            <%= form.label :subcategory, value: "Category" %>
+          </td>
+          <td class="field">
+            <%= form.select "subcategory", grouped_options_for_select(Business.all_subcats, @business.subcategory, prompt: "Please select") %>
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-          <%= form.label :name %>
-        </td>
-        <td class="field">
-          <%= form.text_field :name %>
-        </td>
-      </tr>
+        <%= form.hidden_field :category, value: @business.category %>
+        <tr>
+          <td>
+            <%= form.label :name %>
+          </td>
+          <td class="field">
+            <%= form.text_field :name %>
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-          <%= form.label :phone %>
-        </td>
-        <td class="field">
-          <div class="inline">
-            <%= form.telephone_field :phone, maxlength: 10, size: 12 %>
-          </div>
-          <div class="inline">
-            <%= form.label :phone_ext, "ext" %>
-            <%= form.text_field :phone_ext, pattern: "[0-9]*", size: 5 %>
-          </div>
-        </td>
-      </tr>
+        <tr>
+          <td>
+            <%= form.label :phone %>
+          </td>
+          <td class="field">
+            <div class="inline">
+              <%= form.telephone_field :phone, maxlength: 10, size: 12 %>
+            </div>
+            <div class="inline">
+              <%= form.label :phone_ext, "ext" %>
+              <%= form.text_field :phone_ext, pattern: "[0-9]*", size: 5 %>
+            </div>
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-          <%= form.label :email %>
-        </td>
-        <td class="field">
-          <%= form.email_field :email %>
-        </td>
-      </tr>
+        <tr>
+          <td>
+            <%= form.label :email %>
+          </td>
+          <td class="field">
+            <%= form.email_field :email %>
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-          <%= form.label :address %>
-        </td>
-        <td class="field">
-          <%= form.text_field :address %>
-        </td>
-      </tr>
+        <tr>
+          <td>
+            <%= form.label :address %>
+          </td>
+          <td class="field">
+            <%= form.text_field :address %>
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-          <%= form.label :street %>
-        </td>
-        <td class="field">
-          <%= form.text_field :street %>
-        </td>
-      </tr>
+        <tr>
+          <td>
+            <%= form.label :street %>
+          </td>
+          <td class="field">
+            <%= form.text_field :street %>
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-          <%= form.label :unit %>
-        </td>
-        <td class="field">
-          <%= form.text_field :unit %>
-        </td>
-      </tr>
+        <tr>
+          <td>
+            <%= form.label :unit %>
+          </td>
+          <td class="field">
+            <%= form.text_field :unit %>
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-          <%= form.label :city %>
-        </td>
-        <td class="field">
-          <%= form.select(:city, [["West Roxbury", "West Roxbury"]]) %>
-        </td>
-      </tr>
+        <tr>
+          <td>
+            <%= form.label :city %>
+          </td>
+          <td class="field">
+            <%= form.select(:city, [["West Roxbury", "West Roxbury"]]) %>
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-          <%= form.label :state %>
-        </td>
-        <td class="field">
-          <%= form.select(:state, [["MA", "MA"]]) %>
-        </td>
-      </tr>
+        <tr>
+          <td>
+            <%= form.label :state %>
+          </td>
+          <td class="field">
+            <%= form.select(:state, [["MA", "MA"]]) %>
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-          <%= form.label :zip_code %>
-        </td>
-        <td class="field">
-          <%= form.text_field :zip_code, placeholder: "5-digit zip" %>
-        </td>
-      </tr>
+        <tr>
+          <td>
+            <%= form.label :zip_code %>
+          </td>
+          <td class="field">
+            <%= form.text_field :zip_code, placeholder: "5-digit zip" %>
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-          <%= form.label :website %>
-        </td>
-        <td class="field">
-          <%= form.url_field :website %>
-        </td>
-      </tr>
+        <tr>
+          <td>
+            <%= form.label :website %>
+          </td>
+          <td class="field">
+            <%= form.url_field :website %>
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-          <%= form.label :about %>
-        </td>
-        <td class="field">
-          <%= form.text_area :about, maxlength: 250, rows: 5, cols: 65, placeholder: "Tell us about your business (250 character limit)"%>
-        </td>
-      </tr>
+        <tr>
+          <td>
+            <%= form.label :about %>
+          </td>
+          <td class="field">
+            <%= form.text_area :about, maxlength: 250, rows: 5, cols: 65, placeholder: "Tell us about your business (250 character limit)"%>
+          </td>
+        </tr>
+      </table>
+    </div>
 
-    </table>
-    <table>
-      <thead><strong>Minority Status</strong></thead>
-      <tr>
-        <td>
-          <%= form.label :black %>
-        </td>
-        <td class="field">
-          <%= form.select(:black, [["N/A",""],["Owned","Owned"],["Managed","Managed"]]) %>
-        </td>
-      </tr>
+    <div class="minority-fields">
+      <table>
+        <thead><strong>Minority Ownership Status</strong></thead>
+        <tr>
+          <td>
+            <%= form.label :black, "Black owned" %>
+          </td>
+          <td class="field">
+            <%= form.check_box :black, {}, "Owned", "" %>
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-          <%= form.label :minority %>
-        </td>
-        <td class="field">
-          <%= form.select(:minority, [["N/A",""],["Owned","Owned"],["Managed","Managed"]]) %>
-        </td>
-      </tr>
+        <tr>
+          <td>
+            <%= form.label :minority, "Minority owned" %>
+          </td>
+          <td class="field">
+            <%= form.check_box :minority, {}, "Owned", "" %>
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-          <%= form.label :women %>
-        </td>
-        <td class="field">
-          <%= form.select(:women, [["N/A",""],["Owned","Owned"],["Managed","Managed"]]) %>
-        </td>
-      </tr>
-    </table>
+        <tr>
+          <td>
+            <%= form.label :women, "Woman owned" %>
+          </td>
+          <td class="field">
+            <%= form.check_box :women, {}, "Owned", "" %>
+          </td>
+        </tr>
+      </table>
+    </div>
 
     <div class="schedule-fields">
       <table>
@@ -268,6 +272,26 @@
       </table>
     </div>
 
+    <div class="service-fields">
+      <table>
+        <thead>
+          <Strong>Services Currently Offered</Strong>
+        </thead>
+        <% Service.all.each do |service| %>
+          <tr>
+            <td class="field">
+              <%= form.label "business[service_ids][]", service.name %>
+            </td>
+            <td class ="field">
+              <%= form.check_box "business[services][]", {}, service.id, nil %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <p>Edit Business Contacts</p>
+    
     <div class="actions">
       <%= form.submit "SAVE BUSINESS", class: "button" %>
     </div>
