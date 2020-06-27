@@ -29,6 +29,9 @@ class BusinessesController < ApplicationController
   # POST /businesses
   def create
     @business = Business.new(business_params)
+    if @business[:category] == ""
+      @business[:category] = Business.where({subcategory: @business.subcategory}).select(:category).distinct.take.category
+    end
 
     if @business.save
       redirect_to @business, notice: 'Business was successfully created.'

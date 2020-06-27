@@ -1,6 +1,6 @@
 class Business < ApplicationRecord
   validates :category, presence: true, allow_blank: false
-  validates :category, presence: true, allow_blank: false
+  validates :subcategory, presence: true, allow_blank: false
   validates :name, presence: true, length: { minimum: 3 }
   validates :about, length: { maximum: 250 }
   validates :address, presence: true
