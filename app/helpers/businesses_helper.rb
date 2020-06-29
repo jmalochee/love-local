@@ -1,10 +1,10 @@
 module BusinessesHelper
   def pretty_time(str)
     if str.present?
-      if str.to_i > 1200
-        ((str.to_i - 1200).to_s + " p.m.").insert(-8, ":")
-      elsif str.to_i < 1200
-        (str + " a.m.").insert(-8, ":")
+      if str.gsub(":","").to_i > 1200
+        ((str[0..-4].to_i - 12).to_s + str[-3..-1] + " p.m.")
+      elsif str.gsub(":","").to_i < 1200
+        (str + " a.m.")
       else
         ""
       end

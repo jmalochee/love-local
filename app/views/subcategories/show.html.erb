@@ -1,0 +1,15 @@
+<p>
+	<i>
+		<%= link_to "All Categories", "/categories" %> >
+		<%= link_to @subcategory.category.name, @subcategory.category %> >
+		<%= @subcategory.name %>
+	</i>
+</p>
+
+<h1>Businesses</h1>
+
+<div class="business-results">
+  <% @subcategory.businesses.each do |business| %>
+		<%= render :partial => "businesses/business-results", :locals => { :business => business } %>
+	<%end%>
+</div>

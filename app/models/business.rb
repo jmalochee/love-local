@@ -52,14 +52,23 @@ class Business < ApplicationRecord
     end
   end
 
-  def open_now?
-    now = Time.new
-    (now.hour*100 + now.min).between?(self.hours_today[0].to_i, self.hours_today[1].to_i)
-  end
-
   def open_today
     today = Time.new.strftime('%a')[0..1].downcase    
     [self[today + "_open"], self[today + "_close"]]
+  end
+
+  def open_now?
+    now = Time.new
+    (now.hour*100 + now.min).between?(
+      self.open_today[0].gsub(":","").to_i, 
+      self.open_today[1].gsub(":","").to_i
+    )
+  end
+
+  def closes_in
+    now = Time.now
+    now = now.hour * 100 + now.min
+    self.open_today[1].gsub(":","").to_i - now
   end
 
   def category_url
