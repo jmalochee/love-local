@@ -1,8 +1,6 @@
 class CreateBusinesses < ActiveRecord::Migration[6.0]
   def change
     create_table :businesses do |t|
-      t.string :category
-      t.string :subcategory
       t.string :business_type
       t.string :name
       t.string :address

@@ -5,6 +5,8 @@ class CreatePeople < ActiveRecord::Migration[6.0]
       t.string :mid_name
       t.string :last_name
       t.string :alias
+
+      t.timestamps
     end
   end
 end
