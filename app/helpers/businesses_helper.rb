@@ -12,4 +12,13 @@ module BusinessesHelper
     	""
     end
   end
+
+  def grouped_subcats_for_select
+    subcats = {}
+    Category.all.each do |cat|
+      subcats[cat.name] = []
+      cat.subcategories.each { |sub| subcats[cat.name] << [sub.name, sub.id] }
+    end
+    subcats
+  end
 end

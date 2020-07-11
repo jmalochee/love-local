@@ -70,35 +70,6 @@ class Business < ApplicationRecord
     now = now.hour * 100 + now.min
     self.open_today[1].gsub(":","").to_i - now
   end
-
-  def category_url
-    "/businesses?"+{filter: {attribute: "category", value: self.category}}.to_query
-  end  
-
-  def subcategory_url
-    "/businesses?"+{filter: {attribute: "subcategory", value: self.subcategory}}.to_query
-  end
-
-  def self.all_cats
-    cats = []
-    Business.select(:category).distinct.each {|cat| cats.push(cat.category)}
-    cats
-  end
-
-  def self.all_subs
-    subs = []
-    Business.select(:subcategory).distinct.each {|sub| subs.push(sub.subcategory)}
-    subs
-  end
-
-  def self.all_subcats
-    subcats = {}
-    all_cats.each do |cat|
-      subcats[cat] = []
-      Business.where({category: cat}).select(:subcategory).distinct.each { |sub| subcats[cat] << sub.subcategory }
-    end
-    subcats
-  end
 end
 
 
