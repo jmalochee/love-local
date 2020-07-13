@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+	root 'categories#index'
   get 'subcategories/index'
   get 'subcategories/show'
   get 'categories/index'
