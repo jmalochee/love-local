@@ -1,0 +1,17 @@
+<%= link_to business do %>
+  <div class="business-result">
+    <strong>
+      <%= business.name.upcase %>
+    </strong>
+    <br/>
+    <i>
+      <%= business.category.name %>, 
+      <%= business.subcategory.name %>
+    </i>
+    <br/>
+    <%= business.address + " " + business.street%>
+    <br/>
+    <%= business.open_today? ? "Open today from " : "Closed today" %>
+    <%= business.open_today? ? pretty_time(business.open_today[0]) + " – " + pretty_time(business.open_today[1]) : ""%>
+  </div>
+<% end %>

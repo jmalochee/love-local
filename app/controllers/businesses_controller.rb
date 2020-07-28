@@ -3,13 +3,6 @@ class BusinessesController < ApplicationController
 
   # GET /businesses
   def index
-    @businesses = Business.filter(params[:filter])
-    @categories = @businesses.select(:category).distinct
-    @subcategories = @businesses.select(:subcategory).distinct
-
-    @filter_all = @categories.length > 1
-    @filter_cat = @filter_all ^ (@subcategories.length > 1)
-    @filter_subcat = @subcategories.length == 1
   end
 
   # GET /businesses/1
@@ -28,6 +21,9 @@ class BusinessesController < ApplicationController
   # POST /businesses
   def create
     @business = Business.new(business_params)
+    if @business[:category] == ""
+      @business[:category] = Business.where({subcategory: @business.subcategory}).select(:category).distinct.take.category
+    end
 
     if @business.save
       redirect_to @business, notice: 'Business was successfully created.'
@@ -59,6 +55,6 @@ class BusinessesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def business_params
-      params.require(:business).permit(:filter, :value, :attribute, :category, :subcategory, :name, :phone, :phone_ext, :email, :address, :street, :unit, :city, :state, :zip_code, :website, :about, :women, :minority, :black, :su_open, :su_close, :mo_open, :mo_close, :tu_open, :tu_close, :we_open, :we_close, :th_open, :th_close, :fr_open, :fr_close, :sa_open, :sa_close)
+      params.require(:business).permit(:filter, :value, :attribute, :category, :subcategory, :name, :phone, :phone_ext, :email, :address, :street, :unit, :city, :state, :zip_code, :website, :about, :women, :minority, :black, :su_open, :su_close, :mo_open, :mo_close, :tu_open, :tu_close, :we_open, :we_close, :th_open, :th_close, :fr_open, :fr_close, :sa_open, :sa_close, {service_ids: []}, {socials_attributes: [:site, :url, :id]})
     end
 end

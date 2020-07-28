@@ -1,7 +1,7 @@
 <i>
-	<%= link_to "All Categories", "/businesses" %> >
-	<%= link_to @business.category, "/businesses?"+{filter: {attribute: "category", value: @business.category}}.to_query %> >
-	<%= link_to @business.subcategory, "/businesses?"+{filter: {attribute: "subcategory", value: @business.subcategory}}.to_query %> >
+	<%= link_to "All Categories", "/categories" %> >
+	<%= link_to @business.category.name, @business.category %> >
+	<%= link_to @business.subcategory.name, @business.subcategory %> >
 	<%= @business.name %>
 </i>
 
@@ -88,3 +88,6 @@
 	</tr>
 </table>
 
+<p>
+	<%= link_to "Edit Business", edit_business_path(@business) %>
+</p>

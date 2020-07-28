@@ -1,6 +1,9 @@
-<h1>Editing Business</h1>
+<h1>Update Record</h1>
 
-<%= render 'form', business: @business %>
+<div id="business-form">
+	<h2><i><%= @business.name %></i></h2>
+	<%= render 'form', business: @business %>
 
-<%= link_to 'Show', @business %> |
-<%= link_to 'Back', businesses_path %>
+	<%= link_to 'Show', @business %> |
+	<%= link_to 'Back', businesses_path %>
+</div>

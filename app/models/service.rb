@@ -1,5 +1,6 @@
 class Service < ApplicationRecord
-	validates :code, presence: true
-	validates :name, presence: true
-	has_and_belongs_to_many :businesses
+	has_many :servicings
+	has_many :businesses, through: :servicings
+
+	validates :name, presence: true, uniqueness: true
 end

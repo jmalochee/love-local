@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+	root 'categories#index'
   get 'subcategories/index'
   get 'subcategories/show'
   get 'categories/index'
   get 'categories/show'
-  resources :businesses, except: [:destroy]
+  resources :businesses, only: [:show, :new, :edit, :create, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :categories, only: [:index, :show]
   resources :subcategories, only: [:index, :show]
