@@ -319,6 +319,8 @@
           <td>
             <%= ff.label :url, "Web Address" %> 
             <%= ff.url_field :url %>
+            <% binding.pry %>
+            <%= link_to "Delete", social_path(ff.object.id), :method => :delete, confirm: "Are you sure?", disable_with: "Processing..." %>
           </td>
         </tr>
       <% end %>
